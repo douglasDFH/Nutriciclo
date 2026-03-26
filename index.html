@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NutriCiclo SCZ — Economía Circular</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+:root{--g1:#1a3d0a;--g2:#2d6e18;--g3:#4a9a28;--g4:#7bc142;--br:#6b3a2a;--brl:#a0522d;}
+*{font-family:'Poppins',sans-serif}
+body{overflow-x:hidden;background:#f8fdf4}
+
+/* ── NAVBAR ── */
+#mainNav{background:rgba(26,61,10,.97)!important;backdrop-filter:blur(10px);transition:.3s;padding:.6rem 1.5rem}
+#mainNav.scrolled{background:rgba(15,40,5,.99)!important;box-shadow:0 2px 30px rgba(0,0,0,.4)}
+#mainNav .navbar-brand{font-weight:900;font-size:1.25rem;color:#fff!important;letter-spacing:-.02em}
+#mainNav .navbar-brand span{color:var(--g4)}
+#mainNav .nav-link{color:rgba(255,255,255,.75)!important;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.4rem .9rem!important;border-radius:20px;transition:.2s}
+#mainNav .nav-link:hover,#mainNav .nav-link.active{color:#fff!important;background:rgba(255,255,255,.15)}
+.navbar-toggler{border-color:rgba(255,255,255,.3)}
+.navbar-toggler-icon{filter:invert(1)}
+
+/* ── HERO CAROUSEL ── */
+#heroCarousel{margin-top:0}
+.carousel-item{height:100vh;min-height:550px;position:relative;overflow:hidden}
+.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.slide-overlay{position:absolute;inset:0}
+.slide-content{position:relative;z-index:2;height:100%;display:flex;align-items:center}
+
+/* Slide 1 */
+.s1-bg{background:linear-gradient(150deg,#061405 0%,#0f2808 30%,#1a3d0a 60%,#2d6e18 100%)}
+.s1-overlay{background:radial-gradient(ellipse at 60% 40%,rgba(123,193,66,.12),transparent 60%)}
+.logo-circle{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,#2d6e18,#7bc142);display:flex;align-items:center;justify-content:center;font-size:3.5rem;box-shadow:0 0 60px rgba(123,193,66,.4);animation:glow 3s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 40px rgba(123,193,66,.3)}50%{box-shadow:0 0 80px rgba(123,193,66,.65)}}
+.hero-title{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;color:#fff;line-height:1.05}
+.hero-title span{color:var(--g4)}
+.hero-sub{font-size:clamp(.95rem,1.8vw,1.2rem);color:rgba(255,255,255,.75);line-height:1.7;max-width:580px}
+.btn-hero-primary{background:var(--g3);color:#fff;border:none;padding:.7rem 2rem;border-radius:30px;font-weight:700;font-size:.9rem;letter-spacing:.04em;transition:.3s}
+.btn-hero-primary:hover{background:var(--g4);transform:translateY(-2px);box-shadow:0 8px 30px rgba(74,154,40,.5);color:#fff}
+.btn-hero-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);padding:.7rem 2rem;border-radius:30px;font-weight:700;font-size:.9rem;letter-spacing:.04em;transition:.3s}
+.btn-hero-outline:hover{border-color:#fff;background:rgba(255,255,255,.1);color:#fff}
+
+/* Slide 2 – imagen infografía */
+.s2-bg{background-image:url('image13.png');filter:none}
+.s2-overlay{background:linear-gradient(90deg,rgba(10,25,5,.92) 40%,rgba(10,25,5,.5) 100%)}
+
+/* Slide 3 – impacto */
+.s3-bg{background:linear-gradient(135deg,#0a2d0a,#1e5510,#2d6e18)}
+.s3-overlay{background:radial-gradient(ellipse at 30% 70%,rgba(107,58,42,.2),transparent 60%)}
+.impact-stat{text-align:center;padding:1.5rem 1rem}
+.impact-stat .num{font-size:3.5rem;font-weight:900;color:var(--g4);line-height:1;display:block}
+.impact-stat .lbl{color:rgba(255,255,255,.7);font-size:.85rem;margin-top:.3rem}
+.impact-stat .ic{font-size:2rem;margin-bottom:.5rem;display:block}
+
+.carousel-control-prev,.carousel-control-next{width:5%}
+.carousel-indicators [data-bs-target]{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.5);border:none;margin:0 5px}
+.carousel-indicators .active{background:#fff;transform:scale(1.3)}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(--g2);padding:1.2rem 0}
+.stat-item{text-align:center;padding:.5rem 1rem;border-right:1px solid rgba(255,255,255,.2)}
+.stat-item:last-child{border-right:none}
+.stat-item .sv{font-size:1.6rem;font-weight:900;color:#fff;display:block}
+.stat-item .sl{font-size:.72rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em}
+
+/* ── SECTION STYLES ── */
+.sec-label{display:inline-block;background:var(--g3);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 16px;border-radius:20px;margin-bottom:.8rem}
+.sec-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:var(--g1);line-height:1.2}
+.sec-title span{color:var(--g3)}
+.sec-desc{color:#5a7a4a;font-size:.95rem;line-height:1.7;max-width:600px}
+
+/* ── ABOUT ── */
+#about{background:#fff;padding:5rem 0}
+.about-img-wrap{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);position:relative}
+.about-img-wrap img{width:100%;height:360px;object-fit:cover}
+.about-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--g2);color:#fff;padding:.6rem 1.2rem;border-radius:12px;font-size:.8rem;font-weight:700}
+.about-feature{display:flex;gap:1rem;margin-bottom:1.3rem;align-items:flex-start}
+.about-icon{width:44px;height:44px;border-radius:12px;background:#eef6e7;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.about-feature h5{font-size:.9rem;font-weight:800;color:var(--g1);margin-bottom:.2rem}
+.about-feature p{font-size:.82rem;color:#5a7a4a;margin:0}
+.team-pill{display:inline-flex;align-items:center;gap:.5rem;background:#eef6e7;border-radius:30px;padding:.4rem 1rem .4rem .5rem;font-size:.8rem;font-weight:600;color:var(--g2);margin:.2rem}
+.team-avatar{width:28px;height:28px;border-radius:50%;background:var(--g3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:800}
+
+/* ── EMPATHY MAP ── */
+#empathy{background:linear-gradient(180deg,#f0f8e8,#fff);padding:5rem 0}
+.emp-map-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:1fr 1fr 1fr;
+  gap:12px;
+  max-width:960px;
+  margin:0 auto;
+  min-height:580px;
+}
+.emp-empty{background:transparent}
+.emp-zone{
+  border-radius:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .28s;position:relative;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+.emp-zone:hover{transform:scale(1.04);box-shadow:0 12px 40px rgba(0,0,0,.16);z-index:5}
+.emp-zone-inner{padding:1.4rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.6rem;width:100%}
+.emp-zone-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.emp-zone h5{font-size:.9rem;font-weight:800;color:#1a3d0a;margin:0;line-height:1.3}
+.emp-zone p{font-size:.76rem;color:#5a7a4a;line-height:1.5;margin:0}
+.emp-clic{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-top:.2rem}
+/* colores por zona */
+.emp-piensa{background:linear-gradient(145deg,#e8f5e9,#c8e6c9)} .emp-piensa .emp-clic{color:#2e7d32}
+.emp-oye{background:linear-gradient(145deg,#fff8e1,#ffecb3)} .emp-oye .emp-clic{color:#f57f17}
+.emp-ve{background:linear-gradient(145deg,#e3f2fd,#bbdefb)} .emp-ve .emp-clic{color:#1565c0}
+.emp-dice{background:linear-gradient(145deg,#f3e5f5,#e1bee7)} .emp-dice .emp-clic{color:#6a1b9a}
+/* celda central */
+.emp-center-cell{
+  background:#fff;
+  border-radius:50%;display:flex;
+  align-items:center;justify-content:center;
+  box-shadow:0 8px 40px rgba(45,110,24,.35);
+  overflow:hidden;
+  border:4px solid var(--g3);
+}
+
+/* ── CANVAS ── */
+#canvas{background:#fff;padding:5rem 0}
+.nav-pills .nav-link{border-radius:30px;font-weight:700;font-size:.85rem;padding:.5rem 1.5rem;color:#555;background:#f5f5f5}
+.nav-pills .nav-link.active.pos-tab{background:var(--g2);color:#fff}
+.nav-pills .nav-link.active.neg-tab{background:#c62828;color:#fff}
+.canvas-card{border:none;border-radius:14px;border-top:4px solid var(--g3);box-shadow:0 4px 20px rgba(0,0,0,.07);transition:.3s;cursor:pointer;height:100%}
+.canvas-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.canvas-card.neg{border-top-color:#e53935}
+.canvas-card .q-label{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--g3);margin-bottom:.3rem}
+.canvas-card.neg .q-label{color:#e53935}
+.canvas-card .collapse-content{font-size:.83rem;color:#5a7a4a;line-height:1.6}
+
+/* ── R's ── */
+#circular{background:linear-gradient(135deg,#0a1f05,#1a3d0a,#2d5a15);padding:5rem 0}
+.r-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:2rem 1.5rem;text-align:center;cursor:pointer;transition:.3s;position:relative;overflow:hidden;height:100%}
+.r-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--g3),var(--g4));opacity:0;transition:.3s}
+.r-card:hover::before,.r-card.lit::before{opacity:1}
+.r-card>*{position:relative;z-index:1}
+.r-letter{font-size:2.8rem;font-weight:900;color:var(--g4);transition:.3s}
+.r-card:hover .r-letter,.r-card.lit .r-letter{color:#fff}
+.r-name{font-weight:800;color:#fff;text-transform:uppercase;font-size:.85rem;letter-spacing:.06em;margin:.4rem 0 .6rem}
+.r-desc{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.5;transition:.3s}
+.r-card:hover .r-desc,.r-card.lit .r-desc{color:rgba(255,255,255,.95)}
+
+/* ── MATERIALES ── */
+#materiales{background:#f8fdf4;padding:5rem 0}
+.mat-card{border:none;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:.3s;cursor:pointer;height:100%}
+.mat-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,.14)}
+.mat-img{height:160px;object-fit:cover;width:100%;transition:.4s}
+.mat-card:hover .mat-img{transform:scale(1.06)}
+.mat-body{padding:1.1rem}
+.mat-pct-bar{height:5px;border-radius:3px;background:#e0e0e0;margin:.6rem 0}
+.mat-pct-fill{height:100%;border-radius:3px;transition:width 1.2s ease}
+.circ-fill{background:var(--g3)}
+.parc-fill{background:#ff9800}
+.com-fill{background:var(--brl)}
+.mat-badge-pill{font-size:.65rem;font-weight:700;padding:2px 10px;border-radius:10px;display:inline-block;margin-bottom:.5rem}
+.circ-badge{background:#e8f5e9;color:#2e7d32}
+.parc-badge{background:#fff3e0;color:#e65100}
+.com-badge{background:#fbe9e7;color:#c62828}
+.mat-name{font-size:.9rem;font-weight:800;color:var(--g1);margin-bottom:.2rem}
+.mat-desc{font-size:.78rem;color:#5a7a4a;line-height:1.5}
+.mat-detail-text{font-size:.78rem;color:#5a7a4a;line-height:1.55;margin-top:.5rem;display:none}
+.mat-card.open .mat-detail-text{display:block}
+.mat-toggle-btn{font-size:.72rem;font-weight:700;color:var(--g3);border:none;background:none;padding:0;margin-top:.4rem;cursor:pointer}
+
+/* ── RECURSOS ── */
+#recursos{background:#fff;padding:5rem 0}
+.rec-tab-btn{border-radius:12px;border:none;padding:.7rem 1.5rem;font-weight:700;font-size:.85rem;cursor:pointer;background:#f5f5f5;color:#555;transition:.25s;display:flex;align-items:center;gap:.5rem}
+.rec-tab-btn.active-tec{background:var(--g2);color:#fff}
+.rec-tab-btn.active-ene{background:#e65100;color:#fff}
+.rec-tab-btn.active-nat{background:#00796b;color:#fff}
+.rec-panel{display:none}
+.rec-panel.visible{display:block}
+.rec-item{background:#f8fdf4;border-radius:12px;padding:1.1rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;border-left:4px solid var(--g3);transition:.2s}
+.rec-item:hover{transform:translateX(5px);background:#eef6e7}
+.rec-icon{font-size:1.7rem;flex-shrink:0}
+.rec-item h5{font-size:.88rem;font-weight:800;color:var(--g1);margin-bottom:.2rem}
+.rec-item p{font-size:.8rem;color:#5a7a4a;margin:0;line-height:1.5}
+
+/* ── INNOVACIÓN ── */
+#innovacion{background:linear-gradient(180deg,#f0f8e8,#e8f4de);padding:5rem 0}
+.innov-card{border-radius:18px;overflow:hidden;height:100%;transition:.3s;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.innov-card:hover{transform:translateY(-5px);box-shadow:0 16px 50px rgba(0,0,0,.18)}
+.innov-card .ic-head{padding:2rem;background:linear-gradient(135deg,#1b5e20,#2e7d32);position:relative}
+.innov-card:nth-child(2) .ic-head{background:linear-gradient(135deg,#e65100,#bf360c)}
+.innov-card:nth-child(3) .ic-head{background:linear-gradient(135deg,#0277bd,#01579b)}
+.innov-card:nth-child(4) .ic-head{background:linear-gradient(135deg,#6a1b9a,#4a148c)}
+.innov-card:nth-child(5) .ic-head{background:linear-gradient(135deg,#00695c,#004d40)}
+.innov-card .ic-head .ic-ico{font-size:2.2rem;margin-bottom:.7rem}
+.innov-card .ic-head h4{color:#fff;font-weight:800;font-size:.95rem;margin:0}
+.innov-card .ic-body{padding:1.2rem;background:#fff}
+.innov-card .ic-body p{font-size:.82rem;color:#5a7a4a;line-height:1.6;margin:0}
+.innov-card .ic-extra{font-size:.78rem;color:#888;margin-top:.5rem;display:none}
+.innov-card.open .ic-extra{display:block}
+
+/* ── FOOTER ── */
+footer{background:var(--g1);color:rgba(255,255,255,.7);padding:3rem 0 1.5rem}
+footer .f-logo{font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:.5rem}
+footer .f-logo span{color:var(--g4)}
+footer h6{color:#fff;font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+footer a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.83rem;display:block;margin-bottom:.4rem;transition:.2s}
+footer a:hover{color:var(--g4)}
+footer .f-divider{border-color:rgba(255,255,255,.1);margin:1.5rem 0 1rem}
+footer .f-bottom{font-size:.78rem;color:rgba(255,255,255,.4)}
+
+/* ── MODAL EMPATÍA ── */
+.modal-header.piensa{background:#e8f5e9}
+.modal-header.ve{background:#e3f2fd}
+.modal-header.oye{background:#fff3e0}
+.modal-header.dice{background:#f3e5f5}
+.modal-header.esf{background:#fffde7}
+.modal-header.res{background:#f1f8e9}
+.modal-title-h{font-weight:900;color:var(--g1);font-size:1.05rem}
+.modal-item-row{display:flex;gap:.8rem;align-items:flex-start;padding:.8rem;background:#f9fdf7;border-radius:10px;border-left:3px solid var(--g3);margin-bottom:.7rem}
+.modal-item-row .mit-ico{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
+.modal-item-row p{font-size:.84rem;color:#3a5a28;line-height:1.55;margin:0}
+
+/* AOS overrides */
+[data-aos]{transition-duration:.7s!important}
+
+@media(max-width:768px){
+  .emp-grid{grid-template-columns:1fr}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.15)}
+  .stat-item:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav">
+
+<!-- ══════════════════════════════════
+     NAVBAR
+══════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">
+      <i class="bi bi-arrow-repeat me-1" style="color:var(--g4)"></i>
+      Nutri<span>Ciclo</span> SCZ
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Quiénes Somos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#empathy">Mapa de Empatía</a></li>
+        <li class="nav-item"><a class="nav-link" href="#materiales">Materiales</a></li>
+        <li class="nav-item"><a class="nav-link" href="#canvas">Canvas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#recursos">Recursos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#circular">R's Circular</a></li>
+        <li class="nav-item"><a class="nav-link" href="#innovacion">Innovación</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     HERO CAROUSEL
+══════════════════════════════════ -->
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+  </div>
+  <div class="carousel-inner">
+
+    <!-- SLIDE 1: Brand -->
+    <div class="carousel-item active">
+      <div class="slide-bg s1-bg"></div>
+      <div class="slide-overlay s1-overlay"></div>
+      <div class="slide-content">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-7">
+              <div class="mb-3" data-aos="fade-down">
+                <span style="background:rgba(123,193,66,.2);border:1px solid rgba(123,193,66,.4);color:var(--g4);font-size:.75rem;font-weight:700;padding:5px 18px;border-radius:30px;letter-spacing:.1em;text-transform:uppercase">
+                  Economía Circular · Bolivia 2026
+                </span>
+              </div>
+              <h1 class="hero-title mb-3" data-aos="fade-up">
+                Nutri<span>Ciclo</span><br>SCZ
+              </h1>
+              <p class="hero-sub mb-4" data-aos="fade-up" data-aos-delay="100">
+                Transformamos residuos de mataderos en <strong style="color:var(--g4)">bloques multinutricionales</strong> para el ganado usando larvas BSF — protegiendo los ríos de Santa Cruz y cerrando el ciclo biológico.
+              </p>
+              <div class="d-flex gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+                <a href="#about" class="btn-hero-primary text-decoration-none">
+                  <i class="bi bi-play-circle me-2"></i>Conocer más
+                </a>
+                <a href="#empathy" class="btn-hero-outline text-decoration-none">
+                  <i class="bi bi-map me-2"></i>Ver presentación
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 p-0 d-none d-lg-block" style="position:absolute;right:0;top:0;bottom:0;height:100vh">
+              <img src="producto terminado.png" alt="Bloque Multinutricional" style="width:100%;height:100%;object-fit:cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Infografía -->
+    <div class="carousel-item">
+      <div class="slide-bg s1-bg"></div>
+      <div class="slide-overlay s1-overlay"></div>
+      <div class="slide-content">
+        <div class="container">
+          <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="mb-3">
+              <span style="background:rgba(123,193,66,.2);border:1px solid rgba(123,193,66,.4);color:var(--g4);font-size:.75rem;font-weight:700;padding:5px 18px;border-radius:30px;letter-spacing:.1em;text-transform:uppercase">
+                Modelo de Negocio
+              </span>
+            </div>
+            <h2 style="font-size:clamp(2rem,4vw,3.5rem);font-weight:900;color:#fff;line-height:1.15" class="mb-3">
+              Revolucionando la<br><span style="color:var(--g4)">Nutrición Ganadera</span>
+            </h2>
+            <p style="color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7" class="mb-4">
+              El único bloque en Bolivia a base de sangre y proteína de larvas BSF. Resolvemos 2 problemas a la vez: contaminación de mataderos + alimentación en sequía.
+            </p>
+            <div class="d-flex gap-3">
+              <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:.8rem 1.2rem;text-align:center">
+                <div style="font-size:1.6rem;font-weight:900;color:var(--g4)">74%</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.6)">Origen circular</div>
+              </div>
+              <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:.8rem 1.2rem;text-align:center">
+                <div style="font-size:1.6rem;font-weight:900;color:var(--g4)">20K+</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.6)">Ton/año evitadas</div>
+              </div>
+              <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:.8rem 1.2rem;text-align:center">
+                <div style="font-size:1.6rem;font-weight:900;color:var(--g4)">#1</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.6)">Único en Bolivia</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 p-0 d-none d-lg-block" style="position:absolute;right:0;top:54px;bottom:0;height:calc(100vh - 54px)">
+            <img src="estructura.png" alt="Estructura del bloque" style="width:100%;height:100%;object-fit:cover;object-position:center center">
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Impacto -->
+    <div class="carousel-item">
+      <div class="slide-bg" style="background-image:url('circular .jpeg');background-size:cover;background-position:center center"></div>
+      <div class="slide-overlay" style="background:rgba(5,20,3,.55)"></div>
+      <div class="slide-content">
+        <div class="container text-center">
+          <div class="mb-3">
+            <span style="background:rgba(123,193,66,.2);border:1px solid rgba(123,193,66,.4);color:var(--g4);font-size:.75rem;font-weight:700;padding:5px 18px;border-radius:30px;letter-spacing:.1em;text-transform:uppercase">
+              Nuestro Impacto
+            </span>
+          </div>
+          <h2 style="font-size:clamp(2rem,4vw,3.5rem);font-weight:900;color:#fff;margin-bottom:3rem">
+            Dos problemas.<br><span style="color:var(--g4)">Una solución circular.</span>
+          </h2>
+          <div class="row justify-content-center g-3">
+            <div class="col-6 col-md-3"><div class="impact-stat"><span class="ic">🌊</span><span class="num">+20,000</span><span class="lbl">Ton/año residuos evitados</span></div></div>
+            <div class="col-6 col-md-3"><div class="impact-stat"><span class="ic">♻️</span><span class="num">74%</span><span class="lbl">Materia prima circular</span></div></div>
+            <div class="col-6 col-md-3"><div class="impact-stat"><span class="ic">🐄</span><span class="num">4.4M</span><span class="lbl">Cabezas en SCZ</span></div></div>
+            <div class="col-6 col-md-3"><div class="impact-stat"><span class="ic">🌱</span><span class="num">100%</span><span class="lbl">Biodegradable</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<!-- ══════════════════════════════════
+     STATS BAR
+══════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="sv">+20,000 ton</span><span class="sl">Residuos evitados / año</span></div></div>
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="sv">74%</span><span class="sl">Origen circular</span></div></div>
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="sv">100%</span><span class="sl">Biodegradable</span></div></div>
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="sv">#1 Bolivia</span><span class="sl">Único bloque BSF</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     QUIÉNES SOMOS
+══════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="about-img-wrap" style="background:#f7f3ec;display:flex;align-items:center;justify-content:center;height:380px">
+          <img src="logo y slogan.png" alt="NutriCiclo Logo y Slogan" style="width:100%;height:100%;object-fit:contain;padding:1.5rem">
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="sec-label">Quiénes Somos</div>
+        <h2 class="sec-title mb-3">NutriCiclo <span>SCZ</span></h2>
+        <p class="sec-desc mb-4">Somos un emprendimiento de economía circular que transforma residuos de mataderos en bloques multinutricionales para el ganado usando la mosca soldado negra (BSF), cerrando el ciclo biológico en Santa Cruz de la Sierra.</p>
+        <div class="about-feature">
+          <div class="about-icon">🌊</div>
+          <div><h5>Protegemos los ríos</h5><p>Evitamos que sangre, vísceras y huesos contaminen el río Piraí y río Grande.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-icon">🐄</div>
+          <div><h5>Salvamos el ganado en sequía</h5><p>Nuestros bloques alimentan las 4.4M cabezas bovinas de SCZ cuando no hay pasto.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-icon">🐛</div>
+          <div><h5>Innovación con larvas BSF</h5><p>Hermetia illucens transforma vísceras en proteína premium de 42-50% — únicos en Bolivia.</p></div>
+        </div>
+        <div class="mt-4">
+          <p style="font-size:.8rem;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem">Equipo</p>
+          <span class="team-pill"><span class="team-avatar">MO</span>Maria Ortiz</span>
+          <span class="team-pill"><span class="team-avatar">DF</span>Douglas Flor</span>
+          <span class="team-pill"><span class="team-avatar">LP</span>Leonardo Peña</span>
+          <span class="team-pill"><span class="team-avatar">LR</span>Luis Rocha</span>
+          <span class="team-pill"><span class="team-avatar">JM</span>Joel Miranda</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     MAPA DE EMPATÍA
+══════════════════════════════════ -->
+<section id="empathy">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <div class="sec-label">Actividad 3</div>
+      <h2 class="sec-title">Mapa de <span>Empatía</span></h2>
+      <p class="sec-desc mx-auto mt-2">Haz clic en cada sección para ver el contenido detallado.</p>
+    </div>
+
+    <!-- MAPA TIPO CRUZ -->
+    <div class="emp-map-wrap" data-aos="fade-up" data-aos-delay="100">
+
+      <!-- FILA 1: vacío | PIENSA Y SIENTE | vacío -->
+      <div class="emp-empty"></div>
+      <div class="emp-zone emp-piensa" onclick="openEmpModal('piensa')">
+        <div class="emp-zone-inner">
+          <div class="emp-zone-icon" style="background:#c8e6c9">🧠</div>
+          <h5>¿Qué piensa y siente?</h5>
+          <p>Se preocupa por la sequía, busca reducir costos y quiere soluciones locales para su ganado.</p>
+          <span class="emp-clic">👆 Clic para ver más</span>
+        </div>
+      </div>
+      <div class="emp-empty"></div>
+
+      <!-- FILA 2: OYE | PERSONA | VE -->
+      <div class="emp-zone emp-oye" onclick="openEmpModal('oye')">
+        <div class="emp-zone-inner">
+          <div class="emp-zone-icon" style="background:#ffe0b2">👂</div>
+          <h5>¿Qué oye?</h5>
+          <p>Recomendaciones de otros ganaderos, noticias de sequías severas y la Ley 755.</p>
+          <span class="emp-clic">👆 Clic para ver más</span>
+        </div>
+      </div>
+      <div class="emp-center-cell">
+        <img src="logo y slogan.png" alt="NutriCiclo" style="width:100%;height:100%;object-fit:contain;padding:.5rem;border-radius:50%">
+      </div>
+      <div class="emp-zone emp-ve" onclick="openEmpModal('ve')">
+        <div class="emp-zone-inner">
+          <div class="emp-zone-icon" style="background:#bbdefb">👁️</div>
+          <h5>¿Qué ve?</h5>
+          <p>Pastizales secos, residuos sin aprovechar y precios de soya importada subiendo.</p>
+          <span class="emp-clic">👆 Clic para ver más</span>
+        </div>
+      </div>
+
+      <!-- FILA 3: vacío | DICE Y HACE | vacío -->
+      <div class="emp-empty"></div>
+      <div class="emp-zone emp-dice" onclick="openEmpModal('dice')">
+        <div class="emp-zone-inner">
+          <div class="emp-zone-icon" style="background:#e1bee7">💬</div>
+          <h5>¿Qué dice y hace?</h5>
+          <p>Busca alternativas económicas, asiste a capacitaciones y habla sobre ganadería sostenible.</p>
+          <span class="emp-clic">👆 Clic para ver más</span>
+        </div>
+      </div>
+      <div class="emp-empty"></div>
+
+    </div><!-- /emp-map-wrap -->
+  </div>
+</section>
+
+<!-- MODAL EMPATÍA -->
+<div class="modal fade" id="empModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="border-radius:20px;overflow:hidden;border:none">
+      <div class="modal-header" id="empModalHead" style="border-bottom:none;padding:1.5rem 1.8rem 1rem">
+        <div class="d-flex align-items-center gap-3">
+          <div id="empModalIco" style="width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem"></div>
+          <div>
+            <h5 class="modal-title-h mb-0" id="empModalTitle"></h5>
+            <small class="text-muted" id="empModalSub"></small>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" style="padding:1rem 1.8rem 2rem">
+        <div id="empModalItems"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     CANVAS DE IMPACTO
+══════════════════════════════════ -->
+<section id="canvas">
+  <div class="container">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <div class="sec-label">Canvas de Impacto y Circularidad</div>
+      <h2 class="sec-title">Impactos de <span>NutriCiclo SCZ</span></h2>
+    </div>
+    <ul class="nav nav-pills justify-content-center gap-2 mb-4" data-aos="fade-up">
+      <li class="nav-item"><a class="nav-link pos-tab active" onclick="switchCanvas('pos',this);return false;" href="javascript:void(0)">✅ Impactos Positivos</a></li>
+      <li class="nav-item"><a class="nav-link neg-tab" onclick="switchCanvas('neg',this);return false;" href="javascript:void(0)">⚠️ Impactos Negativos</a></li>
+    </ul>
+    <div id="canvas-pos" data-aos="fade-up">
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4"><div class="canvas-card card p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Cómo generamos impactos positivos?</div>
+          <h6 class="fw-bold">Transformación de residuos en valor</h6>
+          <div class="collapse-content collapse">Obtenemos residuos de mataderos (sangre, vísceras, huesos) que pueden contaminar el río Piraí y río Grande. Los transformamos con larvas BSF en proteína sostenible y producimos bloques multinutricionales para ganado.</div>
+          <small class="text-success fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6 col-lg-4"><div class="canvas-card card p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Qué productos generan estos impactos?</div>
+          <h6 class="fw-bold">Bloque Multinutricional BSF</h6>
+          <div class="collapse-content collapse"><strong>Producto:</strong> Bloques multinutricionales (mejor peso, más leche, menor costo).<br><br><strong>Procesos:</strong> Recolección, BSF y compostaje.<br><br><strong>Servicios:</strong> Capacitación a ganaderos.</div>
+          <small class="text-success fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6 col-lg-4"><div class="canvas-card card p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿A quiénes beneficia?</div>
+          <h6 class="fw-bold">Beneficiarios directos e indirectos</h6>
+          <div class="collapse-content collapse"><strong>Directos:</strong> Ganaderos Norte Integrado y Chiquitanía, trabajadores de mataderos, familias rurales.<br><br><strong>Indirectos:</strong> Población cercana al río Piraí y río Grande, medio ambiente.</div>
+          <small class="text-success fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6 col-lg-4"><div class="canvas-card card p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Cómo nos relacionamos?</div>
+          <h6 class="fw-bold">Relaciones con actores clave</h6>
+          <div class="collapse-content collapse"><strong>Ganaderos:</strong> Venta directa + capacitación.<br><strong>Mataderos:</strong> Recolección de residuos (Ley 755).<br><strong>Zonas rurales:</strong> Mejora ambiental y productiva.<br><strong>Instituciones:</strong> Alianzas estratégicas.</div>
+          <small class="text-success fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6 col-lg-4"><div class="canvas-card card p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Qué necesidad resolvemos?</div>
+          <h6 class="fw-bold">Alimentación en sequía + residuos</h6>
+          <div class="collapse-content collapse">Alimentación del ganado en sequía, reducción de costos, manejo de residuos de mataderos, menor contaminación de ríos y menor dependencia de insumos importados.</div>
+          <small class="text-success fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6 col-lg-4"><div class="canvas-card card p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Qué nos hace especiales?</div>
+          <h6 class="fw-bold">Único bloque BSF en Bolivia</h6>
+          <div class="collapse-content collapse">Resolvemos 2 problemas a la vez: <strong>limpiamos mataderos</strong> y <strong>salvamos al ganado en sequía</strong>. Es el único bloque en Bolivia a base de sangre y proteína de larvas BSF. 100% local = más accesible.</div>
+          <small class="text-success fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+      </div>
+    </div>
+    <div id="canvas-neg" style="display:none" data-aos="fade-up">
+      <div class="row g-3">
+        <div class="col-md-6"><div class="canvas-card card neg p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Cómo generamos impactos negativos?</div>
+          <h6 class="fw-bold">Olor y emisiones en el proceso</h6>
+          <div class="collapse-content collapse">Al procesar sangre se genera vapor con olor fuerte perceptible a 500m durante 8-12h. Calcinación de huesos emite ~15 kg CO₂. Vehículo de recolección consume diésel. Bloque mal formulado puede causar intoxicación por urea.</div>
+          <small class="text-danger fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6"><div class="canvas-card card neg p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿A quiénes afecta?</div>
+          <h6 class="fw-bold">Vecinos, operarios y ganado joven</h6>
+          <div class="collapse-content collapse"><strong>Directos:</strong> Vecinos (olor), operarios con cal sin EPP, ganado con bloques mal formulados, terneros &lt;6 meses.<br><br><strong>Indirectos:</strong> Medio ambiente local y atmósfera.</div>
+          <small class="text-danger fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6"><div class="canvas-card card neg p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Cómo mitigamos cada impacto?</div>
+          <h6 class="fw-bold">Plan de mitigación activo</h6>
+          <div class="collapse-content collapse">🌿 Olor → Deshidratador solar cerrado en zona industrial PI-44.<br>💨 CO₂ → Bagazo excedente (carbono neutro).<br>🚗 Transporte → GPS optimizado -30% km.<br>🐄 Urea → Penetrómetro por lote + etiqueta.<br>👷 Cal → EPP obligatorio.</div>
+          <small class="text-danger fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+        <div class="col-md-6"><div class="canvas-card card neg p-3" onclick="toggleCollapse(this)">
+          <div class="q-label">¿Grupos vulnerables afectados?</div>
+          <h6 class="fw-bold">Responsabilidad social activa</h6>
+          <div class="collapse-content collapse">Sí: operarios sin formación técnica, terneros &lt;6 meses vulnerables a urea, comunidades periurbanas con menor capacidad de reclamo. Por eso ubicamos la planta en zona industrial PI-44.</div>
+          <small class="text-danger fw-bold mt-2 d-block">▼ Ver más</small>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     R's CIRCULARES
+══════════════════════════════════ -->
+<section id="circular" style="padding:5rem 0">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="sec-label" style="background:rgba(255,255,255,.2);color:#fff">Economía Circular</span>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:#fff;margin-top:.5rem">Las R's que <span style="color:var(--g4)">aplicamos</span></h2>
+      <p style="color:rgba(255,255,255,.6);font-size:.95rem">Haz clic en cada R para ver cómo NutriCiclo la aplica en su modelo de negocio.</p>
+    </div>
+    <div class="row g-3 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-6 col-md-4 col-lg-3"><div class="r-card" onclick="this.classList.toggle('lit')"><div class="r-letter">Re</div><div class="r-name">Rechazar</div><div class="r-desc">Rechazamos el modelo lineal. No usamos materia prima virgen como base del producto.</div></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="r-card" onclick="this.classList.toggle('lit')"><div class="r-letter">Ru</div><div class="r-name">Reutilizar</div><div class="r-desc">Sangre, vísceras, huesos, melaza, cascarilla y afrecho son residuos reutilizados como materia prima.</div></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="r-card" onclick="this.classList.toggle('lit')"><div class="r-letter">Rd</div><div class="r-name">Reducir</div><div class="r-desc">Reducimos +20,000 ton/año de residuos al vertedero, emisiones de metano e importación de soya.</div></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="r-card lit" onclick="this.classList.toggle('lit')"><div class="r-letter">♻️</div><div class="r-name">NutriCiclo</div><div class="r-desc">Ciclo biológico cerrado: TODA la materia regresa a la tierra como compost, frass BSF o ceniza.</div></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="r-card" onclick="this.classList.toggle('lit')"><div class="r-letter">Rm</div><div class="r-name">Remanufacturar</div><div class="r-desc">Vísceras → larvas BSF → harina proteica premium con 42-50% de proteína. Valor desde residuo.</div></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="r-card" onclick="this.classList.toggle('lit')"><div class="r-letter">Rc</div><div class="r-name">Reciclar</div><div class="r-desc">Estiércol del ganado → compost con lombriz roja → fertiliza suelo de cañeros.</div></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="r-card" onclick="this.classList.toggle('lit')"><div class="r-letter">Ri</div><div class="r-name">Reintegrar</div><div class="r-desc">Compost, frass BSF y ceniza regresan a la tierra. Ciclo biológico 100% cerrado.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     MATERIALES E INSUMOS
+══════════════════════════════════ -->
+<section id="materiales">
+  <div class="container">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <div class="sec-label">Actividad 3</div>
+      <h2 class="sec-title">Materiales e <span>Insumos</span></h2>
+      <p class="sec-desc mx-auto mt-2">10 ingredientes del bloque. El 74% proviene de residuos reutilizados.</p>
+    </div>
+    <div class="d-flex gap-2 justify-content-center flex-wrap mb-4" data-aos="fade-up">
+      <button class="btn btn-sm btn-success fw-bold" onclick="filterMats('all',this)">Todos</button>
+      <button class="btn btn-sm btn-outline-success fw-bold" onclick="filterMats('circ',this)">♻️ Origen Circular</button>
+      <button class="btn btn-sm btn-outline-warning fw-bold" onclick="filterMats('parc',this)">⚡ Parcialmente Circular</button>
+      <button class="btn btn-sm btn-outline-danger fw-bold" onclick="filterMats('com',this)">🛒 Comercial</button>
+    </div>
+    <div class="row g-3" id="matGrid" data-aos="fade-up">
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item circ">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image2.png" class="mat-img" alt="Melaza"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill circ-badge">♻️ Circular</div>
+            <div class="mat-name">Melaza de caña</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill circ-fill" style="width:30%"></div></div>
+            <div class="mat-desc">Fuente de energía y saborizante. <strong>30%</strong> · Ingenio Guabirá.</div>
+            <div class="mat-detail-text">Líquido viscoso con 50% azúcares fermentables. Origen: subproducto de refinación de azúcar. Sin procesamiento previo. No genera desechos.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item circ">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image3.png" class="mat-img" alt="Harina de sangre"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill circ-badge">♻️ Circular</div>
+            <div class="mat-name">Harina de sangre</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill circ-fill" style="width:10%"></div></div>
+            <div class="mat-desc">80% proteína cruda. <strong>10%</strong> · <strong>GRATIS</strong> de mataderos.</div>
+            <div class="mat-detail-text">Residuo más contaminante de los mataderos. Proceso: hervir 20 min → prensar → secar 60-70°C → moler. EVITA contaminación de ríos.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item circ">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image4.png" class="mat-img" alt="Cascarilla"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill circ-badge">♻️ Circular</div>
+            <div class="mat-name">Cascarilla de arroz</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill circ-fill" style="width:10%"></div></div>
+            <div class="mat-desc">Fibra estructural. <strong>10%</strong> · Arroceras del norte integrado.</div>
+            <div class="mat-detail-text">Cáscara del grano de arroz: celulosa, lignina y sílice. Residuo GRATIS de arroceras. Da estructura sólida al bloque y absorbe humedad de la melaza.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item parc">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image5.png" class="mat-img" alt="Afrecho"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill parc-badge">⚡ Parcial</div>
+            <div class="mat-name">Afrecho de soya</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill parc-fill" style="width:15%"></div></div>
+            <div class="mat-desc">Proteína 44-48%. <strong>15%</strong> · Subproducto aceiteras SCZ.</div>
+            <div class="mat-detail-text">Torta sólida de extracción de aceite de soya. Sin procesamiento adicional. Segunda fuente de proteína + almidón. Energía cero.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item com">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image6.png" class="mat-img" alt="Cal viva"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill com-badge">🛒 Comercial</div>
+            <div class="mat-name">Cal viva (CaO)</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill com-fill" style="width:10%"></div></div>
+            <div class="mat-desc">Aglutinante. <strong>10%</strong> · Da dureza al bloque. ⚠️ EPP.</div>
+            <div class="mat-detail-text">Fragua la mezcla para que el bloque sea sólido y el ganado lo lame sin poder morderlo. Reacción exotérmica al contacto con agua. ⚠️ Guantes + mascarilla P2 + gafas.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item com">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image7.png" class="mat-img" alt="Urea"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill com-badge">🛒 Comercial</div>
+            <div class="mat-name">Urea agrícola</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill com-fill" style="width:10%"></div></div>
+            <div class="mat-desc">46% nitrógeno. <strong>10%</strong> · Proteína microbial. ⚠️ Dosis.</div>
+            <div class="mat-detail-text">Las bacterias del rumen la convierten en proteína microbial (≡ 287% proteína). Disolver en agua → mezclar con melaza. ⚠️ NO terneros &lt;6 meses. ~Bs 200-250/50kg.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item circ">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image9.png" class="mat-img" alt="Harina de hueso"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill circ-badge">♻️ Circular</div>
+            <div class="mat-name">Harina de hueso</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill circ-fill" style="width:5%"></div></div>
+            <div class="mat-desc">30% calcio + 15% fósforo. <strong>5%</strong> · <strong>GRATIS</strong>.</div>
+            <div class="mat-detail-text">Huesos de mataderos. Proceso: horno 500-600°C por 4h → enfriar → moler fino. Subproducto: ceniza → enmienda de suelo. Energía: gas o bagazo.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item circ">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image10.png" class="mat-img" alt="BSF"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill circ-badge">♻️ Circular — Innovación</div>
+            <div class="mat-name">Harina BSF</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill circ-fill" style="width:4%"></div></div>
+            <div class="mat-desc">42-50% proteína. <strong>4%</strong> · Único en Bolivia. Granja propia.</div>
+            <div class="mat-detail-text">Vísceras → larvas 10-14 días (25-30°C) → deshidratar 70°C → moler. Subproducto: Frass = fertilizante premium. Sensores IoT ESP32+DHT22.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mat-item com">
+        <div class="mat-card" onclick="toggleMat(this)">
+          <div style="overflow:hidden"><img src="image12.png" class="mat-img" alt="Azufre"></div>
+          <div class="mat-body">
+            <div class="mat-badge-pill com-badge">🛒 Comercial</div>
+            <div class="mat-name">Azufre</div>
+            <div class="mat-pct-bar"><div class="mat-pct-fill com-fill" style="width:1%"></div></div>
+            <div class="mat-desc">Síntesis aminoácidos. <strong>1%</strong> · 250g por bloque de 25kg.</div>
+            <div class="mat-detail-text">Mineral para síntesis de aminoácidos azufrados (metionina, cisteína). Complementa la urea en la síntesis de proteína microbial. Impacto ambiental nulo.</div>
+            <button class="mat-toggle-btn">▼ Ver detalle</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center mt-4" data-aos="fade-up">
+      <span class="badge bg-success me-2 py-2 px-3">♻️ Circulares: 74%</span>
+      <span class="badge bg-warning text-dark me-2 py-2 px-3">⚡ Parcial: 15%</span>
+      <span class="badge bg-danger py-2 px-3">🛒 Comerciales: 26%</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     RECURSOS
+══════════════════════════════════ -->
+<section id="recursos">
+  <div class="container">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <div class="sec-label">Canvas Circularidad</div>
+      <h2 class="sec-title">Nuestros <span>Recursos</span></h2>
+    </div>
+    <div class="d-flex gap-2 justify-content-center mb-4 flex-wrap" data-aos="fade-up">
+      <button class="rec-tab-btn active-tec" onclick="switchRec('tec',this)"><i class="bi bi-gear"></i> Técnicos</button>
+      <button class="rec-tab-btn" onclick="switchRec('ene',this)"><i class="bi bi-lightning"></i> Energéticos</button>
+      <button class="rec-tab-btn" onclick="switchRec('nat',this)"><i class="bi bi-tree"></i> Naturales</button>
+    </div>
+    <div id="rec-tec" class="rec-panel visible" data-aos="fade-up">
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-6"><div class="rec-item"><div class="rec-icon">🏭</div><div><h5>Infraestructura industrial</h5><p>Procesamiento térmico, mecánico y biológico a pequeña/mediana escala en zona industrial PI-44.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item"><div class="rec-icon">⚒️</div><div><h5>Maquinaria principal</h5><p>Molinos de martillos, mezcladoras industriales, prensas mecánicas, hornos de calcinación y deshidratadores solares.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item"><div class="rec-icon">🐛</div><div><h5>Módulos BSF</h5><p>Cría de mosca soldado negra con ciclo de 10-14 días. Temperatura 25-30°C, humedad 60-70%. Producción continua.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item"><div class="rec-icon">📡</div><div><h5>Tecnología IoT</h5><p>Sensores ESP32+DHT22 para monitoreo automatizado. Control de temperatura y humedad en módulos BSF en tiempo real.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item"><div class="rec-icon">🧪</div><div><h5>Control de calidad</h5><p>Penetrómetro para verificar dureza y consistencia de cada lote. Garantiza dosificación segura de urea antes de liberar.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item"><div class="rec-icon">🚗</div><div><h5>Logística optimizada</h5><p>Vehículo de recolección con GPS. Rutas optimizadas para reducir km en 30%. Mataderos FRIGOR y municipal de SCZ.</p></div></div></div>
+      </div>
+    </div>
+    <div id="rec-ene" class="rec-panel" data-aos="fade-up">
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-6"><div class="rec-item" style="border-color:#e65100"><div class="rec-icon">🔥</div><div><h5>Gas natural</h5><p>Para alcanzar 500-600°C en horno de calcinación de huesos. Plan futuro: sustituir por bagazo (carbono neutro).</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item" style="border-color:#e65100"><div class="rec-icon">⚡</div><div><h5>Energía eléctrica</h5><p>Para molinos, mezcladoras, deshidratadores y sensores IoT. Fuente principal de operación cotidiana.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item" style="border-color:#e65100"><div class="rec-icon">☀️</div><div><h5>Solar parabólica</h5><p>Deshidratadores solares para sangre y larvas BSF. Alta radiación solar de SCZ reduce dependencia eléctrica.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item" style="border-color:#e65100"><div class="rec-icon">🌱</div><div><h5>Biogás (visión futura)</h5><p>Procesamiento de biogás propio para autonomía energética parcial. Cierre total del ciclo energético.</p></div></div></div>
+      </div>
+    </div>
+    <div id="rec-nat" class="rec-panel" data-aos="fade-up">
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-6"><div class="rec-item" style="border-color:#00796b"><div class="rec-icon">🩸</div><div><h5>Residuos orgánicos (74%)</h5><p>Sangre, vísceras y huesos bovinos — +20,000 ton/año disponibles en SCZ sin aprovechar. Materia prima GRATIS.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item" style="border-color:#00796b"><div class="rec-icon">💧</div><div><h5>Agua — protección directa</h5><p>Consumo interno mínimo. Por cada tonelada de sangre transformada, evitamos miles de litros contaminados en los ríos.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item" style="border-color:#00796b"><div class="rec-icon">🌿</div><div><h5>Flora y fauna simbiótica</h5><p>Fertilizantes revitalizan pastizales. BSF sanea patógenos; ácido láurico de la harina BSF mejora inmunidad del ganado.</p></div></div></div>
+        <div class="col-md-6"><div class="rec-item" style="border-color:#00796b"><div class="rec-icon">🌱</div><div><h5>Suelo — biodegradabilidad 100%</h5><p>Compost, frass BSF y ceniza retornan a la tierra. Empaques retornables con Bs 5 de descuento al devolver.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     INNOVACIÓN
+══════════════════════════════════ -->
+<section id="innovacion">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="sec-label">Innovación</div>
+      <h2 class="sec-title">Estrategias de <span>Innovación</span></h2>
+      <p class="sec-desc mx-auto mt-2">Haz clic en cada tarjeta para ver el detalle completo.</p>
+    </div>
+    <div class="row g-4" data-aos="fade-up">
+      <div class="col-md-6 col-lg-4"><div class="innov-card" onclick="this.classList.toggle('open')">
+        <div class="ic-head"><div class="ic-ico">⏱️</div><h4>Extensión de Vida Útil</h4></div>
+        <div class="ic-body"><p>Bloque de larga duración y liberación lenta. La cal da consistencia resistente a condiciones climáticas durante toda la temporada de sequía.</p><p class="ic-extra">Al finalizar su función como suplemento, los restos sirven como reintegrador de nutrientes para el suelo. Componentes orgánicos y minerales se reintegran en la tierra de forma natural.</p></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="innov-card" onclick="this.classList.toggle('open')">
+        <div class="ic-head"><div class="ic-ico">🔄</div><h4>Residuo Cero</h4></div>
+        <div class="ic-body"><p>Si el bloque se quiebra, se vuelve a prensar o se usa como abono. Nada se desperdicia. Producto 100% local más accesible.</p><p class="ic-extra">Recompensamos a los mataderos facilitándoles el cumplimiento de la Ley 755 (Gestión de Residuos), transformando su problema legal en nuestra materia prima útil.</p></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="innov-card" onclick="this.classList.toggle('open')">
+        <div class="ic-head"><div class="ic-ico">📊</div><h4>Mejora Continua</h4></div>
+        <div class="ic-body"><p>Pruebas de dureza con penetrómetro. Medición de aceptación del ganado en campo. Iteración constante de la fórmula.</p><p class="ic-extra">Visión futura: energía solar para deshidratar ingredientes y sensores automatizados IoT (ESP32+DHT22) para controlar humedad en la producción.</p></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="innov-card" onclick="this.classList.toggle('open')">
+        <div class="ic-head"><div class="ic-ico">🤝</div><h4>Alianzas Estratégicas</h4></div>
+        <div class="ic-body"><p>Alianzas con municipios para facilitar la recolección de residuos y capacitar a ganaderos en el uso correcto del bloque.</p><p class="ic-extra">Cooperación internacional: Swisscontact y JICA financian proyectos de economía circular en Bolivia. La Ley 755 como palanca con los mataderos.</p></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="innov-card" onclick="this.classList.toggle('open')">
+        <div class="ic-head"><div class="ic-ico">🌐</div><h4>Mercado Global BSF</h4></div>
+        <div class="ic-body"><p>Mercado BSF global: $770M (2025) → $9.5B para 2035. Crecimiento 32.4% anual. Primeros en Bolivia.</p><p class="ic-extra">La UE aprobó proteínas de insectos en alimentación animal (2023). Solo Ecuador tiene planta BSF industrial en Sudamérica. Esta brecha tecnológica es nuestra oportunidad central.</p></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="f-logo">Nutri<span>Ciclo</span> SCZ</div>
+        <p style="font-size:.83rem;line-height:1.7;color:rgba(255,255,255,.55)">Transformamos residuos de mataderos en bloques multinutricionales para el ganado usando larvas BSF — cerrando el ciclo biológico en Santa Cruz de la Sierra, Bolivia.</p>
+        <img src="image1.png" alt="UPDS" style="height:50px;opacity:.5;margin-top:.5rem">
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Secciones</h6>
+        <a href="#hero">Inicio</a>
+        <a href="#about">Quiénes Somos</a>
+        <a href="#empathy">Mapa Empatía</a>
+        <a href="#canvas">Canvas Impacto</a>
+        <a href="#circular">R's Circular</a>
+        <a href="#materiales">Materiales</a>
+        <a href="#innovacion">Innovación</a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h6>Equipo</h6>
+        <a href="#">Maria Ortiz</a>
+        <a href="#">Douglas Flor Hernández</a>
+        <a href="#">Leonardo Peña</a>
+        <a href="#">Luis Rocha</a>
+        <a href="#">Joel Miranda</a>
+      </div>
+      <div class="col-lg-3">
+        <h6>Información</h6>
+        <p style="font-size:.82rem">
+          <i class="bi bi-geo-alt me-2" style="color:var(--g4)"></i>Santa Cruz de la Sierra, Bolivia<br>
+          <i class="bi bi-building me-2" style="color:var(--g4)"></i>Universidad Privada Domingo Savio<br>
+          <i class="bi bi-journal-bookmark me-2" style="color:var(--g4)"></i>Emprendedurismo · 2026<br>
+          <i class="bi bi-arrow-repeat me-2" style="color:var(--g4)"></i>Economía Circular · BSF · Ganadería
+        </p>
+      </div>
+    </div>
+    <hr class="f-divider">
+    <div class="f-bottom d-flex justify-content-between flex-wrap gap-2">
+      <span>© 2026 NutriCiclo SCZ · Universidad Privada Domingo Savio</span>
+      <span>Actividad 3 & 4 · Emprendedurismo</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════
+     SCRIPTS
+══════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({once:true,offset:80});
+
+// Navbar scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// Empathy modal data
+const EMP = {
+  piensa:{ico:'🧠',bg:'#e8f5e9',title:'¿Qué piensa y siente?',sub:'Aspiraciones, miedos y preocupaciones del ganadero',
+    items:[
+      {e:'😰',t:'Se preocupa profundamente por la sequía recurrente que seca sus pastizales y pone en riesgo su ganado cada temporada.'},
+      {e:'💰',t:'Quiere reducir los costos de alimentación del ganado; los suplementos importados son demasiado caros para pequeños productores.'},
+      {e:'🌱',t:'Le importa el bienestar de sus animales y busca soluciones locales, accesibles y confiables que funcionen en campo.'},
+      {e:'🏆',t:'Aspira a mejorar productividad: más peso en sus reses, más leche y menos mortalidad en temporada seca.'},
+      {e:'🤝',t:'Confía en recomendaciones de otros ganaderos y en el respaldo de FEGASACRUZ para adoptar nuevas tecnologías.'}
+    ]},
+  ve:{ico:'👁️',bg:'#e3f2fd',title:'¿Qué ve?',sub:'Entorno visual e influencias del ganadero',
+    items:[
+      {e:'🌵',t:'Pastizales secos y quemados en la Chiquitanía; el 65% del hato ganadero de SCZ sufre sequías recurrentes.'},
+      {e:'🏭',t:'Mataderos generando +20,000 ton/año de residuos (sangre, vísceras, huesos) sin aprovechar ni tratar correctamente.'},
+      {e:'📈',t:'Precios de harina de soya importada ($380-420/ton) con tendencia alcista constante.'},
+      {e:'🌊',t:'Ríos Piraí y Grande contaminados por efluentes de mataderos que no gestionan sus residuos correctamente.'},
+      {e:'🌍',t:'Tendencia mundial hacia la economía circular y proteínas alternativas; mercado BSF creciendo 32.4% anual.'}
+    ]},
+  oye:{ico:'👂',bg:'#fff3e0',title:'¿Qué oye?',sub:'Lo que escucha de su entorno y comunidad',
+    items:[
+      {e:'💬',t:'Recomendaciones de otros ganaderos sobre suplementos tradicionales costosos e importados.'},
+      {e:'📰',t:'Noticias sobre sequías cada vez más severas y su impacto devastador en el sector ganadero boliviano.'},
+      {e:'⚖️',t:'Sobre la Ley 755 de Gestión de Residuos y nuevas obligaciones ambientales para mataderos.'},
+      {e:'🔬',t:'Que proteínas de insectos (BSF) son el futuro de la alimentación animal — la UE las aprobó en 2023.'},
+      {e:'🏦',t:'Sobre el programa gubernamental de Fomento Ganadero (DS 4560) con Bs 443 millones para el sector.'}
+    ]},
+  dice:{ico:'💬',bg:'#f3e5f5',title:'¿Qué dice y hace?',sub:'Comportamiento y acciones observables',
+    items:[
+      {e:'🔍',t:'Busca activamente alternativas de alimentación económicas para la época de sequía.'},
+      {e:'🗣️',t:'Habla con otros ganaderos sobre los problemas de la sequía y comparte soluciones en ferias y reuniones de FEGASACRUZ.'},
+      {e:'🛒',t:'Compra suplementos convencionales (sal mineral, melaza) en el mercado tradicional, muchas veces importados.'},
+      {e:'📚',t:'Asiste a capacitaciones técnicas y está dispuesto a adoptar nuevas tecnologías si son económicamente viables.'},
+      {e:'♻️',t:'Muestra interés en sostenibilidad cuando ve resultados concretos en su ganado: más peso, más leche.'}
+    ]},
+  esf:{ico:'⚡',bg:'#fffde7',title:'ESFUERZOS (Dolores)',sub:'Obstáculos, frustraciones y desafíos enfrentados',
+    items:[
+      {e:'🗣️',t:'Promueve el cuidado del medio ambiente y habla con amigos sobre la importancia de reciclar, pero enfrenta resistencia cultural.'},
+      {e:'🚮',t:'Falta de cultura de reciclaje en la ciudad; muchas personas no separan la basura en sus hogares ni en los mataderos.'},
+      {e:'📍',t:'Pocos puntos accesibles para reciclar; no todos los barrios de Santa Cruz tienen centros de acopio cercanos.'},
+      {e:'💸',t:'Productos ecológicos más costosos; algunos productos biodegradables son más caros que los tradicionales importados.'}
+    ]},
+  res:{ico:'🏆',bg:'#f1f8e9',title:'RESULTADOS (Ganancias)',sub:'Beneficios esperados y logros deseados',
+    items:[
+      {e:'🌊',t:'Reducir la contaminación en la ciudad; menos basura acumulada en calles, canales y drenajes de Santa Cruz.'},
+      {e:'♻️',t:'Cuidar el medio ambiente; disminuir la cantidad de residuos que llegan a los vertederos y contaminan ríos.'},
+      {e:'🏘️',t:'Mejorar la calidad de vida en Santa Cruz; tener barrios más limpios, saludables y productivos.'},
+      {e:'🌱',t:'Contribuir a un futuro más sostenible; que las próximas generaciones hereden un entorno más limpio y próspero.'}
+    ]}
+};
+
+function openEmpModal(key){
+  const d=EMP[key];
+  document.getElementById('empModalHead').className='modal-header '+key;
+  document.getElementById('empModalIco').textContent=d.ico;
+  document.getElementById('empModalIco').style.background=d.bg;
+  document.getElementById('empModalTitle').textContent=d.title;
+  document.getElementById('empModalSub').textContent=d.sub;
+  document.getElementById('empModalItems').innerHTML=d.items.map(i=>`
+    <div class="modal-item-row"><div class="mit-ico">${i.e}</div><p>${i.t}</p></div>
+  `).join('');
+  new bootstrap.Modal(document.getElementById('empModal')).show();
+}
+
+// Canvas tabs
+function switchCanvas(tab,btn){
+  document.getElementById('canvas-pos').style.display=tab==='pos'?'block':'none';
+  document.getElementById('canvas-neg').style.display=tab==='neg'?'block':'none';
+  document.querySelectorAll('.nav-pills .nav-link').forEach(a=>a.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// Canvas card collapse
+function toggleCollapse(card){
+  const c=card.querySelector('.collapse-content');
+  const s=card.querySelector('small');
+  const open=c.classList.toggle('show');
+  s.textContent=open?'▲ Cerrar':'▼ Ver más';
+}
+
+// Materials filter
+function filterMats(type,btn){
+  document.querySelectorAll('#matGrid .mat-item').forEach(el=>{
+    el.style.display=(type==='all'||el.classList.contains(type))?'':'none';
+  });
+}
+
+// Materials toggle
+function toggleMat(card){
+  const open=card.classList.toggle('open');
+  card.querySelector('.mat-toggle-btn').textContent=open?'▲ Cerrar':'▼ Ver detalle';
+}
+
+// Recursos tabs
+function switchRec(tab,btn){
+  document.querySelectorAll('.rec-panel').forEach(p=>p.classList.remove('visible'));
+  document.querySelectorAll('.rec-tab-btn').forEach(b=>{b.className='rec-tab-btn'});
+  document.getElementById('rec-'+tab).classList.add('visible');
+  if(tab==='tec') btn.className='rec-tab-btn active-tec';
+  if(tab==='ene') btn.className='rec-tab-btn active-ene';
+  if(tab==='nat') btn.className='rec-tab-btn active-nat';
+}
+</script>
+</body>
+</html>
